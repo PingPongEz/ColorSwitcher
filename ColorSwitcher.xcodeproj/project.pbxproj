@@ -11,6 +11,8 @@
 		09371F2A282D504800F8F403 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09371F29282D504800F8F403 /* ContentView.swift */; };
 		09371F2C282D504A00F8F403 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09371F2B282D504A00F8F403 /* Assets.xcassets */; };
 		09371F2F282D504A00F8F403 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09371F2E282D504A00F8F403 /* Preview Assets.xcassets */; };
+		09371F38282D57AA00F8F403 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09371F37282D57AA00F8F403 /* Modifiers.swift */; };
+		09371F3A282D7B5700F8F403 /* CustomTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09371F39282D7B5700F8F403 /* CustomTF.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		09371F29282D504800F8F403 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		09371F2B282D504A00F8F403 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09371F2E282D504A00F8F403 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		09371F37282D57AA00F8F403 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		09371F39282D7B5700F8F403 /* CustomTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTF.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +55,10 @@
 		09371F26282D504800F8F403 /* ColorSwitcher */ = {
 			isa = PBXGroup;
 			children = (
+				09371F37282D57AA00F8F403 /* Modifiers.swift */,
 				09371F27282D504800F8F403 /* ColorSwitcherApp.swift */,
 				09371F29282D504800F8F403 /* ContentView.swift */,
+				09371F39282D7B5700F8F403 /* CustomTF.swift */,
 				09371F2B282D504A00F8F403 /* Assets.xcassets */,
 				09371F2D282D504A00F8F403 /* Preview Content */,
 			);
@@ -138,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				09371F2A282D504800F8F403 /* ContentView.swift in Sources */,
+				09371F38282D57AA00F8F403 /* Modifiers.swift in Sources */,
+				09371F3A282D7B5700F8F403 /* CustomTF.swift in Sources */,
 				09371F28282D504800F8F403 /* ColorSwitcherApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
