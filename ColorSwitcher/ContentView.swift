@@ -15,7 +15,6 @@ enum Field {
 
 struct ContentView: View {
     
-    let sizeOfRectangle = CGSize(width: 250, height: 160)
     @State private var sliderRedValue = Double.random(in: 1...255)
     @State private var sliderGreenValue = Double.random(in: 1...255)
     @State private var slidetBlueValue = Double.random(in: 1...255)
@@ -30,35 +29,37 @@ struct ContentView: View {
                 .foregroundColor(.gray)
             VStack {
                 
-                RoundedRectangle(cornerRadius: 14)
-                    .foregroundColor(
-                        Color(
-                            CGColor(
-                                red: sliderRedValue / 255,
-                                green: sliderGreenValue / 255,
-                                blue: slidetBlueValue / 255,
-                                alpha: 1
-                            )
-                        )
-                    )
+                RoundedRectangleForView(
+                    colorRed: $sliderRedValue,
+                    colorGreen: $sliderGreenValue,
+                    colorBlue: $slidetBlueValue
+                )
                 
-                    .frame(size: sizeOfRectangle)
-                    .overlay(RoundedRectangle(cornerRadius: 14).stroke(.white, lineWidth: 3))
-                    .padding(EdgeInsets(top: 8, leading: 16, bottom: 56, trailing: 16))
                 SwiftUIView(sliderValue: $sliderRedValue, color: .red)
                     .focused($focusedField, equals: .red)
+                    .onTapGesture {
+                    buttonColor = .red
+                }
                 SwiftUIView(sliderValue: $sliderGreenValue, color: .green)
                     .focused($focusedField, equals: .green)
+                    .onTapGesture {
+                    buttonColor = .green
+                }
                 SwiftUIView(sliderValue: $slidetBlueValue, color: .blue)
                     .focused($focusedField, equals: .blue)
+                    .onTapGesture {
+                    buttonColor = .blue
+                }
             }
         }
         .focused($tfFocused)
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
                 Spacer()
-                Button("Done") {
+                Button {
                     tfFocused = false
+                } label: {
+                    Text("Done").bold()
                 }
                 .foregroundColor(buttonColor)
             }
@@ -69,69 +70,6 @@ struct ContentView: View {
     }
 }
 
-struct SwiftUIView: View {
-    
-    @Binding var sliderValue: Double
-    @State private var text = ""
-    @FocusState var tfFocused: Bool
-    
-    let color: Color
-    
-    
-    var body: some View {
-        HStack {
-            Text("0").bold()
-                .font(.system(size: 16))
-                .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 4))
-                .foregroundColor(.black)
-            Slider(value: $sliderValue, in: 0...255, step: 1)
-            
-                .onAppear(perform: {
-                    text = String(lround(sliderValue))
-                })
-                .onChange(of: sliderValue, perform: { _ in
-                    text = String(lround(sliderValue))
-                })
-            
-                .tint(color)
-                .background(.white).cornerRadius(8)
-                .overlay(RoundedRectangle(cornerRadius: 8).stroke(.black, lineWidth: 1))
-                .shadow(color: .black, radius: 1, x: 1, y: 1)
-            
-            TextField("", text: $text) { _ in
-                if var value = Double(text) {
-                    if value < 0 {
-                        value = 0
-                    }
-                    if value > 255 {
-                        value = 255
-                    }
-                    sliderValue = value
-                } else {
-                    sliderValue = 0
-                }
-            }
-            .background()
-            .cornerRadius(4)
-            .frame(width: 40)
-            .overlay(RoundedRectangle(cornerRadius: 4).stroke(lineWidth: 0.5))
-            .shadow(color: .black, radius: 0.5, x: 1, y: 1)
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 16))
-            .keyboardType(.numberPad)
-        }
-    }
-}
-
-struct TapGestureView {
-    @State var didTap = false
-    
-    var tap: some Gesture {
-        TapGesture(count: 1)
-            .onEnded { _ in
-                self.didTap = !self.didTap
-            }
-    }
-}
 //
 //struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
